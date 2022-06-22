@@ -25,8 +25,5 @@ jobs:
       - name: Build image
         run: docker build . -t ${IMAGE,,} # lowercase IMAGE
 
-      - name: Login to ghcr.io
-        run: docker login https://ghcr.io -u token --password-stdin <<< ${{ github.token }}
-
-      - name: Publish image
-        run: docker push ${IMAGE,,} # lowercase IMAGE
+      - name: Pull image
+        run: docker pull ghcr.io/actions/jekyll-build-pages:v1.0.3
